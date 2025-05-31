@@ -3,3 +3,4 @@ artifacts/*
 *.egg-info/
 .env
 __pycache__/
+!artifacts/*.dvc
