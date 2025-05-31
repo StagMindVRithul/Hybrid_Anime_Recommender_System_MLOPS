@@ -1,0 +1,8 @@
+2025-05-26 11:50:14,911 - INFO - Successfully read the YAML file
+2025-05-26 11:50:14,911 - INFO - Data Ingestion started with mlop-project-2 and ['anime.csv', 'anime_with_synopsis.csv', 'animelist.csv']
+2025-05-26 11:50:14,911 - INFO - Data ingestion process started
+2025-05-26 11:50:21,142 - INFO - Downloaded smaller file anime.csv successfully
+2025-05-26 11:50:24,102 - INFO - Downloaded smaller file anime_with_synopsis.csv successfully
+2025-05-26 11:58:30,713 - INFO - Downloaded smaller file animelist.csv successfully
+2025-05-26 11:58:30,715 - INFO - Data Ingestion completed successfully
+2025-05-26 11:58:30,715 - INFO - Data ingestion process finished

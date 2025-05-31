@@ -1,0 +1,15 @@
+numpy
+python-dotenv
+pandas
+setuptools
+google-cloud-storage #to interact with our storage buckets 
+pyyaml
+matplotlib
+seaborn 
+tensorflow
+tensorflow-keras
+wordcloud
+ipykernel
+scikit-learn
+comet-ml
+dvc

@@ -1,0 +1,18 @@
+2025-05-28 09:06:49,258 - INFO - Data Processing Initialized
+2025-05-28 09:06:57,407 - INFO - Data loaded successfully from artifacts/raw/animelist.csv
+2025-05-28 09:07:09,781 - INFO - Filtered users with at least 100 ratings
+2025-05-28 09:07:10,177 - INFO - Ratings scaled to range [0, 1]
+2025-05-28 09:07:10,797 - INFO - User IDs encoded and decoded successfully
+2025-05-28 09:07:11,514 - INFO - Anime IDs encoded and Decoded successfully
+2025-05-28 09:07:20,295 - INFO - Data split into training and testing sets successfully
+2025-05-28 09:07:20,538 - INFO - user2user_encoded - Artifacts saved successfully
+2025-05-28 09:07:20,773 - INFO - user2user_decoded - Artifacts saved successfully
+2025-05-28 09:07:20,789 - INFO - anime2anime_encoded - Artifacts saved successfully
+2025-05-28 09:07:20,805 - INFO - anime2anime_decoded - Artifacts saved successfully
+2025-05-28 09:07:21,225 - INFO - x_train_array - Artifacts saved successfully
+2025-05-28 09:07:21,229 - INFO - x_test_array - Artifacts saved successfully
+2025-05-28 09:07:21,495 - INFO - y_train - Artifacts saved successfully
+2025-05-28 09:07:21,497 - INFO - y_test - Artifacts saved successfully
+2025-05-28 09:08:36,824 - INFO - Rating DataFrame saved successfully
+2025-05-28 09:08:38,241 - INFO - Anime data processed and saved successfully
+2025-05-28 09:08:38,241 - INFO - Data processing completed successfully
