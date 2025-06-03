@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hybrid Anime Recommendation System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🎌 Hybrid Anime Recommendation System</h1>
+
+    <div class="form-container">
+        <form method="POST">
+            <input type="number" name="userID" placeholder="Enter your User ID" required>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+
+    {% if recommendations %}
+    <h2 class="subtitle">🎯 Top 10 Anime Recommendations for User ID: {{ user_id }}</h2>
+    <div class="recommendations">
+        {% for anime in recommendations %}
+        <div class="card">
+            <div class="anime-title">{{ anime }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>

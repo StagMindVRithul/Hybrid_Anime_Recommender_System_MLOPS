@@ -28,9 +28,7 @@ def getSynopsis(anime,SYNOPSIS_DF):
 def find_similar_animes(name, ANIME_WEIGHTS_PATH, ANIME2ANIME_ENCODED, ANIME2ANIME_DECODED, DF_PATH, SYNOPSIS_DF, n=10, return_dist=False, neg=False):
     anime2anime_encoded = joblib.load(ANIME2ANIME_ENCODED)
     anime2anime_decoded = joblib.load(ANIME2ANIME_DECODED)
-    df = pd.read_csv(DF_PATH,low_memory=True)
-    synopsis_df = pd.read_csv(SYNOPSIS_DF,low_memory=True)
-    index = getAnimeFrame(name, df)['MAL_ID'].values[0]
+    index = getAnimeFrame(name, DF_PATH)['MAL_ID'].values[0]
     encoded_index = anime2anime_encoded.get(index)
 
     weights = joblib.load(ANIME_WEIGHTS_PATH)
@@ -52,8 +50,8 @@ def find_similar_animes(name, ANIME_WEIGHTS_PATH, ANIME2ANIME_ENCODED, ANIME2ANI
     similarityArr = []
     for close in closest:
         decoded_id = anime2anime_decoded.get(close)
-        synopsis = getSynopsis(decoded_id, synopsis_df)
-        anime_frame = getAnimeFrame(decoded_id, df)
+        synopsis = getSynopsis(decoded_id, SYNOPSIS_DF)
+        anime_frame = getAnimeFrame(decoded_id, DF_PATH)
         anime_name = anime_frame['eng_version'].values[0]
         genre = anime_frame['Genres'].values[0]
         similarity = dists[close]
@@ -123,14 +121,11 @@ def get_user_preferences(user_id, RATING_DF, DF_PATH):
 
 ############## 6. GET_USER_RECOMMENDATIONS ##############
 def get_user_recommendations(similar_users , user_pref ,DF_PATH , SYNOPSIS_DF, RATING_DF, n=10):
-    rating_df = pd.read_csv(RATING_DF,low_memory=True)
-    df = pd.read_csv(DF_PATH,low_memory=True)
-    synopsis_df = pd.read_csv(SYNOPSIS_DF,low_memory=True)
     recommended_animes = []
     anime_list = []
 
     for user_id in similar_users.user_id.values:
-        pref_list = get_user_preferences(int(user_id) , rating_df, df)
+        pref_list = get_user_preferences(int(user_id) , RATING_DF, DF_PATH)
 
         pref_list = pref_list[~pref_list.eng_version.isin(user_pref.eng_version.values)]
 
@@ -146,10 +141,10 @@ def get_user_recommendations(similar_users , user_pref ,DF_PATH , SYNOPSIS_DF, R
                 n_user_pref = sorted_list[sorted_list.index == anime_name].values[0][0]
 
                 if isinstance(anime_name,str):
-                    frame = getAnimeFrame(anime_name,df)
+                    frame = getAnimeFrame(anime_name,DF_PATH)
                     anime_id = frame.MAL_ID.values[0]
                     genre = frame.Genres.values[0]
-                    synopsis = getSynopsis(int(anime_id),synopsis_df)
+                    synopsis = getSynopsis(int(anime_id),SYNOPSIS_DF)
 
                     recommended_animes.append({
                         "n" : n_user_pref,

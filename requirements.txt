@@ -14,3 +14,4 @@ scikit-learn
 comet-ml
 dvc
 dvc-gs #google storage for DVC
+flask
