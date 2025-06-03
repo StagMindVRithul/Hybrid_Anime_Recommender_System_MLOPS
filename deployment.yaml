@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ml-app
+  template:
+    metadata:
+      labels:
+        app: ml-app
+    spec:
+      containers:
+      - name: ml-app-container
+        image: gcr.io/animers-460504/ml-project:latest
+        ports:
+        - containerPort: 5000 
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: ml-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
